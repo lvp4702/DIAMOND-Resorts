@@ -64,7 +64,7 @@ header {
     background-color: #fff;
     width: 100%;
     position: fixed;
-    z-index: 1000;
+    z-index: 99;
 }
 
 .sticky {
@@ -423,8 +423,8 @@ header {
     align-items: center;
     border-radius: 50%;
     position: fixed;
-    bottom: 40px;
-    right: 20px;
+    bottom: 100px;
+    right: 23px;
     border: 1px solid var(--black);
     z-index: 100;
 }

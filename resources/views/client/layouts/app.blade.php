@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/client/main.css') }}">
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+
 </head>
 
 <body>
@@ -29,9 +30,17 @@
             <i class="fa-solid fa-chevron-up"></i>
         </div>
 
+        <div>
+            <df-messenger
+            intent="WELCOME"
+            chat-title="DIAMOND_Resorts"
+            agent-id="cb24ac73-2441-4f42-8c77-00302a2f251e"
+            language-code="en" Height="230px"
+            ></df-messenger>
+        </div>
     </div>
 </body>
-
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"
     integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
