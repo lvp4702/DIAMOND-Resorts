@@ -1,0 +1,291 @@
+:root {
+    --black: #192a56;
+    --primary: #0cc0df;
+    --text: #898989;
+}
+
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none !important;
+    outline: none;
+    border: none;
+    transition: all 0.2s linear;
+}
+
+.active {
+    color: var(--primary);
+    background-color: #ecfcff;
+    font-weight: bold;
+}
+
+.form-control, .form-select
+{
+    font-size: 1.3rem !important;
+}
+
+body {
+    padding: 0 !important;
+}
+
+html {
+    font-size: 70%;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+.wrapper {
+    height: 100%;
+}
+
+header {
+    background-color: white;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0 1px 10px 2px #bebebe;
+    z-index: 99;
+}
+
+.header_main {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+}
+
+.header_right {
+    font-size: 1.4rem;
+}
+
+.header_right span {
+    font-weight: bolder;
+}
+
+.logo {
+    text-shadow: -1px 0 rgb(255, 205, 205), 0 1px rgb(255, 205, 205), 1px 0 rgb(255, 205, 205), 0 -1px rgb(255, 205, 205);
+    font: bold calc(1em + 2 * (100vw - 120px) / 100) 'Dancing Script', cursive, fantasy;
+    color: var(--primary);
+    font-size: 2.5rem;
+}
+
+.containner {
+    display: flex;
+}
+
+.sidebar {
+    background-color: white;
+    height: 100vh;
+    box-shadow: 1px 0 10px 2px #bebebe;
+    position: fixed;
+}
+
+.dashboard {
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard span {
+    margin-top: 60px;
+    padding: 30px;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.dashboard a {
+    font-size: 1.4rem;
+    color: var(--black);
+    padding: 14px 20px;
+}
+
+.dashboard a:hover {
+    color: var(--primary);
+    background-color: #ecfcff;
+    font-weight: bold;
+}
+
+.content {
+    margin: 80px 20px 20px 225px;
+    width: 83%;
+}
+
+/* search */
+/* .search_input {
+    width: 300px;
+    height: 34px;
+    border: 1px solid #ccc;
+    padding: 14px;
+    font-size: 1.3rem;
+}
+
+.search_input:focus {
+    box-shadow: 0 0 4px #bebebe;
+} */
+
+.tbl {
+    width: 100%;
+    margin-top: 16px;
+    background-color: white;
+    font-size: 1.3rem;
+}
+
+.tbl,
+th,
+td {
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 18px;
+    text-align: left;
+}
+
+td
+{
+    max-width: 250px;
+    word-wrap: break-word;
+}
+tr:nth-child(even) {
+    background-color: #ecfcff;
+}
+
+#tbl_user img
+{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+#tbl_user,
+#tbl_room,
+#tbl_news,
+#tbl_booking,
+#tbl_comments,
+#tbl_contact {
+    box-shadow: 0 0 4px #bebebe;
+}
+
+.content_top {
+    padding-bottom: 30px;
+}
+
+.content_top button {
+    float: right;
+}
+
+.btn {
+    font-size: 1.3rem;
+    float: right;
+    margin: 2px;
+}
+
+.modal-content {
+    padding: 10px;
+}
+
+.pagination {
+    margin-top: 16px;
+    float: right;
+}
+
+.page-item {
+    margin: 0 4px;
+}
+
+.page-link {
+    padding: 8px 16px;
+    font-size: 1.4rem;
+}
+
+.room_img,
+.news_img {
+    width: 120px;
+}
+
+.btn-warning {
+    color: white !important;
+}
+
+#list_room,
+#list_news {
+    margin-top: 16px;
+}
+
+
+.list_room_item,
+.list_news_item {
+    margin-bottom: 3px;
+}
+
+
+/* Slide */
+.listSlide {
+    display: grid;
+    grid-template-columns: auto auto;
+    text-align: center;
+}
+
+.item {
+    height: 250px;
+    overflow: hidden;
+    margin: 5px;
+    position: relative;
+}
+
+.item form
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.item img {
+    height: 250px;
+}
+
+.item img:hover {
+    filter: brightness(80%);
+}
+
+.item:hover .btn_delete_slide {
+    display: block;
+    animation: botToTop 0.4s ease-in-out;
+
+}
+
+.btn_delete_slide
+{
+    display: none;
+}
+
+.btn_delete_slide i {
+    border-radius: 50%;
+    padding: 20px;
+    border: 1px solid white;
+    color: white;
+    font-size: 1.5rem;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.btn_delete_slide i:hover {
+    background-color: rgb(255, 87, 87, 0.8);
+    color: white;
+    border-color: white;
+}
+
+@keyframes botToTop {
+    0% {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
