@@ -4,6 +4,9 @@
         <a class="btn btn-primary" href="{{ route('booking.create') }}">
             <i class="fa-solid fa-plus"></i> Add new
         </a>
+        <a class="btn btn-primary" href="{{ route('booking.thongKe') }}" style="float: left;">
+            Thống kê
+        </a>
     </div>
     <div id="list_booking">
         <table class="tbl" id="tbl_booking">

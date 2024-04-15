@@ -26,7 +26,7 @@
         </div>
         @include('client.layouts.footer')
 
-        <div class="back-to-top">
+        <div class="back-to-top" style="display: none">
             <i class="fa-solid fa-chevron-up"></i>
         </div>
 

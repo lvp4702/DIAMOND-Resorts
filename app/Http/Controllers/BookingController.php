@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\User;
 use App\Models\Room;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookingController extends Controller
 {
@@ -50,7 +51,7 @@ class BookingController extends Controller
                 || ($existingBooking->check_inDate <= $checkOutDate && $checkOutDate <= $existingBooking->check_outDate)
                 || ($checkInDate <= $existingBooking->check_inDate && $existingBooking->check_inDate <= $checkOutDate)
                 || ($checkInDate <= $existingBooking->check_outDate && $existingBooking->check_outDate <= $checkOutDate)
-            ){
+            ) {
                 return redirect()->back()->with('error', 'Phòng đã có người đặt trong khoảng thời gian bạn chọn !');
             }
         }
@@ -96,5 +97,20 @@ class BookingController extends Controller
     {
         $booking->delete();
         return redirect()->route('booking.index')->with('message', 'Xóa thành công !');
+    }
+
+    public function thongKe()
+    {
+        $bookings = Booking::select(
+            DB::raw('YEAR(created_at) as year'),
+            DB::raw('MONTH(created_at) as month'),
+            DB::raw('COUNT(id) as total_orders'),
+            DB::raw('SUM(total) as total_amount')
+        )
+            ->where('status', 'Đã thanh toán')
+            ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
+            ->get();
+
+        return view('admin.booking.thongKe', compact('bookings'));
     }
 }
