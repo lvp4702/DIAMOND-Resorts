@@ -10,7 +10,7 @@
 
         <div class="mb-3 fs-4">
             <label for="content" class="form-label">Content</label>
-            <textarea rows="6" class="form-control" name="content" id="content" disabled>{{ $news->content }}</textarea>
+            <textarea name="content" id="editor">{{ $news->content }}</textarea>
         </div>
 
         <div class="mb-3 fs-4">

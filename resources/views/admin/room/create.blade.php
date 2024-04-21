@@ -24,8 +24,7 @@
 
         <div class="mb-3 fs-4">
             <label for="describe" class="form-label">Describe</label>
-            <textarea class="form-control @error('describe') border-danger @enderror" name="describe"
-                id="describe">{{ old('describe') }}</textarea>
+            <textarea name="describe" id="editor">{{ old('describe') }}</textarea>
             @error('describe')
                 <span class="text-danger">{{ $message }}</span>
             @enderror

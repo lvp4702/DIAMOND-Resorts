@@ -14,7 +14,7 @@
 
         <div class="mb-3 fs-4">
             <label for="describe" class="form-label">Describe</label>
-            <textarea rows="6" class="form-control" name="describe" id="describe" disabled>{{ $room->describe }}</textarea>
+            <textarea name="describe" id="editor">{{ $room->describe }}</textarea>
         </div>
 
         <div class="mb-3 fs-4">

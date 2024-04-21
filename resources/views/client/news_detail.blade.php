@@ -13,7 +13,7 @@
                 <h1>{{ $news->title }}</h1>
                 <div class="divider"></div>
                 <img src="{{ asset($news->img1) }}" alt="">
-                <code>{{ $news->content }}</code>
+                <code>{!! $news->content !!}</code>
                 @if ($news->img2)
                 <img src="{{ asset($news->img2) }}" alt="">
                 @endif

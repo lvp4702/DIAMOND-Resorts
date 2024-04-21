@@ -54,7 +54,7 @@
 
                 <h1 class="room_detail-name">{{ $room->name }}</h1>
                 <p class="room_detail-price"><span>{{ number_format($room->price, 0, ',', '.') }}đ</span> / đêm</p>
-                <div class="room_detail-describe">{{ $room->describe }}</div>
+                <div class="room_detail-describe">{!! $room->describe !!}</div>
 
                 <form method="POST" class="comment_form" action="{{ route('client.cmt') }}">
                     @csrf
@@ -175,7 +175,7 @@
                 {{ $comments->links() }}
             @else
                 <div class="no_cmt">
-                    <i class="fa-solid fa-comment-slash"></i>
+                    <i class="fa-regular fa-message"></i>
                     <p>Chưa có đánh giá !</p>
                 </div>
             @endif

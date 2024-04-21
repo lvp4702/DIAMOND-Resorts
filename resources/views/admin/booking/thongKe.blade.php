@@ -16,7 +16,7 @@
                     <tr>
                         <td>{{ $booking->month }}/{{ $booking->year }}</td>
                         <td>{{ $booking->total_orders }}</td>
-                        <td>{{ $booking->total_amount }}</td>
+                        <td>{{ number_format($booking->total_amount, 0, ',', '.') }}đ</td>
                     </tr>
                 @endforeach
             </tbody>

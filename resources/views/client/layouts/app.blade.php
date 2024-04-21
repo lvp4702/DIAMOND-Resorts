@@ -35,7 +35,7 @@
             intent="WELCOME"
             chat-title="DIAMOND_Resorts"
             agent-id="cb24ac73-2441-4f42-8c77-00302a2f251e"
-            language-code="en" Height="230px"
+            language-code="en"
             ></df-messenger>
         </div>
     </div>
