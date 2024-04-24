@@ -77,7 +77,7 @@
                     <img src="{{ asset($item->img1) }}" alt="">
                     <div class="news_other-item-title">{{ $item->title }}</div>
                     <div class="divider" style="margin-left: 16px;"></div>
-                    <div class="news_other-item-content">{{ $item->content }}</div>
+                    <div class="news_other-item-content">{!! $item->content !!}</div>
                 </a>
             @endforeach
             </div>

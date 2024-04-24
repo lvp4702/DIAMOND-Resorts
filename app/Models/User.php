@@ -65,6 +65,6 @@ class User extends Authenticatable
 
     public function order()
     {
-        return $this->hasOne(order::class, 'user_id', 'id');
+        return $this->hasOne(Order::class, 'user_id', 'id');
     }
 }

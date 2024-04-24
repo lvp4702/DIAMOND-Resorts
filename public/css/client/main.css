@@ -1930,6 +1930,10 @@ header {
     overflow: hidden;
     text-wrap: nowrap;
     color: var(--text);
+    display: -webkit-box;
+    line-height: 28px;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
     font-size: 1.4rem;
     padding-top: 8px;
 }
@@ -2011,16 +2015,16 @@ header {
     width: 30%;
     overflow: hidden;
     margin: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 
 .home_5-right-list-item-content p {
     font-weight: bold;
     color: var(--black);
     line-height: 25px;
-    display: -webkit-box;
     font-size: 1.4rem;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
 }
 
 

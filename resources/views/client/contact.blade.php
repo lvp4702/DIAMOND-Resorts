@@ -9,7 +9,7 @@
     </div>
     <div class="contact_2">
         <div class="contact_2-left contact-left">
-            <form action="{{ route('contact.store') }}" method="post" class="contact_form">
+            <form action="{{ route('client.send_contact') }}" method="post" class="contact_form">
                 @csrf
                 <div>
                     <input type="text" name="fullname" id="fullname" value="{{ old('fullname') }}"

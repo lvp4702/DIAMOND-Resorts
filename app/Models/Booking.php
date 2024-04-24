@@ -31,7 +31,7 @@ class Booking extends Model
     }
     public function order()
     {
-        return $this->hasOne(order::class, 'booking_id', 'id');
+        return $this->hasOne(Order::class, 'booking_id', 'id');
     }
 }
 

@@ -123,7 +123,7 @@
                                 <div class="home_5-left-list-item-name">{{ $item->title }}</div>
                                 <div class="home_5-left-list-item-date">{{ $item->created_at->format('d') }} tháng {{ $item->created_at->format('m')}}, {{ $item->created_at->format('Y') }}</div>
                                 <div class="divider"></div>
-                                <div class="home_5-left-list-item-content">{{ $item->content }}</div>
+                                <div class="home_5-left-list-item-content">{!! $item->content !!}</div>
                             </a>
                             <a href="{{ route('client.news_detail', $item->id) }}" class="button2 home_5-left-list-item-btn">ĐỌC THÊM</a>
                         </div>
@@ -142,7 +142,7 @@
                                     <img src="{{ $item->img1 }}" alt="">
                                 </div>
                                 <div class="home_5-right-list-item-content">
-                                    <p>{{ $item->content }}</p>
+                                    <p>{!! $item->content !!}</p>
                                 </div>
                             </a>
                         </div>

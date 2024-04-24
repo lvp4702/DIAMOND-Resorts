@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\Comment\CommentRequest;
+use App\Http\Requests\Contact\ContactRequest;
 use App\Http\Requests\Order\OrderRequest;
 use App\Http\Requests\Profile\ProfileRequest;
 use App\Models\Booking;
 use App\Models\Comment;
+use App\Models\Contact;
 use App\Models\News;
 use App\Models\Room;
 use App\Models\Slide;
@@ -281,6 +283,13 @@ class ClientController extends Controller
     public function contact()
     {
         return view('client.contact');
+    }
+
+    public function send_contact(ContactRequest $request)
+    {
+        Contact::create($request->all());
+
+        return redirect()->back()->with('message', 'Gửi thông tin liên hệ thành công !');
     }
 
     public function comment(CommentRequest $request)

@@ -62,6 +62,7 @@ Route::get('/rooms/{id}', [ClientController::class, 'room_detail'])->name('clien
 Route::get('/news', [ClientController::class, 'news'])->name('client.news');
 Route::get('/news/{id}', [ClientController::class, 'news_detail'])->name('client.news_detail');
 Route::get('/contact', [ClientController::class, 'contact'])->name('client.contact');
+Route::post('/contact', [ClientController::class, 'send_contact'])->name('client.send_contact');
 Route::post('/cmt', [ClientController::class, 'comment'])->name('client.cmt');
 
 Route::post('/booking', [ClientController::class, 'booking'])->name('client.booking');
