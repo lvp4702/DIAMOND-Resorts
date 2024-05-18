@@ -4,7 +4,7 @@
         <a class="btn btn-primary" href="{{ route('user.create') }}">
             <i class="fa-solid fa-plus"></i> Add new
         </a>
-        <a class="btn btn-primary" href="{{ route('user.employee') }}" style="float: left;">Nhân viên</a>
+        <a class="btn btn-outline-info" href="{{ route('user.employee') }}" style="float: left;">Nhân viên</a>
     </div>
     <div id="list_user">
         <table class="tbl" id="tbl_user">
@@ -47,7 +47,7 @@
                             <form action="{{ route('user.edit', $customer) }}" method="GET" id="editForm">
                                 @csrf
 
-                                <button title="Edit" type="submit" class="btn btn-success btn-edit">
+                                <button title="Edit" type="submit" class="btn btn-outline-success btn-edit">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </button>
                             </form>
@@ -55,7 +55,7 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button title="Delete" type="submit" class="btn btn-danger btn-delete"
+                                <button title="Delete" type="submit" class="btn btn-outline-danger btn-delete"
                                     onclick="return confirmDelete()">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>

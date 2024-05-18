@@ -38,7 +38,7 @@
                             <form action="{{ route('booking.edit', $booking) }}" method="GET" id="editForm">
                                 @csrf
 
-                                <button title="Edit" type="submit" class="btn btn-success btn-edit">
+                                <button title="Edit" type="submit" class="btn btn-outline-success btn-edit">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </button>
                             </form>
@@ -47,7 +47,7 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button title="Delete" type="submit" class="btn btn-danger btn-delete" onclick="return confirmDelete()">
+                                <button title="Delete" type="submit" class="btn btn-outline-danger btn-delete" onclick="return confirmDelete()">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </form>
@@ -55,7 +55,7 @@
                             <form action="{{ route('booking.show', $booking) }}" method="GET" id="detailForm">
                                 @csrf
 
-                                <button title="Detail" type="submit" class="btn btn-warning btn-detail">
+                                <button title="Detail" type="submit" class="btn btn-outline-warning btn-detail">
                                     <i class="fa-regular fa-eye"></i>
                                 </button>
                             </form>

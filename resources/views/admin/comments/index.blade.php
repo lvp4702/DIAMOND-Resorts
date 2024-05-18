@@ -30,7 +30,7 @@
                             <form action="{{ route('comment.edit', $comment) }}" method="GET" id="editForm">
                                 @csrf
 
-                                <button title="Reply" type="submit" class="btn btn-success btn-edit">
+                                <button title="Reply" type="submit" class="btn btn-outline-success btn-edit">
                                     <i class="fa-solid fa-reply"></i>
                                 </button>
                             </form>
@@ -38,7 +38,7 @@
                                 @csrf
                                 @method('DELETE')
 
-                                <button title="Delete" type="submit" class="btn btn-danger btn-delete" onclick="return confirmDelete()">
+                                <button title="Delete" type="submit" class="btn btn-outline-danger btn-delete" onclick="return confirmDelete()">
                                     <i class="fa-regular fa-trash-can"></i>
                                 </button>
                             </form>
