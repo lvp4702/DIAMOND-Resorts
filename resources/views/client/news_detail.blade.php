@@ -66,7 +66,7 @@
             </div>
         </div>
         <div class="news_2-bot">
-            <h1>Bài viết liên quan</h1>
+            <h1>Bài viết khác</h1>
             <div class="divider"></div>
             <div class="news_other">
                 @foreach ($other_news as $item)

@@ -5,7 +5,6 @@
             <i class="fa-solid fa-plus"></i> Add new
         </a>
         <a class="btn btn-primary" href="{{ route('user.employee') }}" style="float: left;">Nhân viên</a>
-        <a class="btn btn-primary" href="{{ route('user.customer') }}" style="float: left;">Khách hàng</a>
     </div>
     <div id="list_user">
         <table class="tbl" id="tbl_user">
@@ -25,34 +24,34 @@
             </thead>
 
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($customers as $customer)
                     <tr>
-                        <td>{{ $user->id }}</td>
+                        <td>{{ $customer->id }}</td>
                         <td>
                             <div style="display: flex; align-items: center;">
-                                @if ($user->avatar)
-                                    <img src="{{ asset($user->avatar) }}" alt="">
+                                @if ($customer->avatar)
+                                    <img src="{{ asset($customer->avatar) }}" alt="">
                                 @endif
-                                {{ $user->username }}
+                                {{ $customer->username }}
                             </div>
                         </td>
-                        <td>{{ $user->email }}</td>
-                        <td>{{ $user->fullname }}</td>
-                        <td>{{ $user->phoneNumber }}</td>
-                        <td>{{ $user->address }}</td>
-                        <td>{{ $user->created_at->format('Y-m-d') }}</td>
-                        <td>{{ $user->email_verified_at ? $user->email_verified_at->format('Y-m-d') : 'Chưa xác minh' }}
+                        <td>{{ $customer->email }}</td>
+                        <td>{{ $customer->fullname }}</td>
+                        <td>{{ $customer->phoneNumber }}</td>
+                        <td>{{ $customer->address }}</td>
+                        <td>{{ $customer->created_at->format('Y-m-d') }}</td>
+                        <td>{{ $customer->email_verified_at ? $customer->email_verified_at->format('Y-m-d') : 'Chưa xác minh' }}
                         </td>
-                        <td>{{ $user->role->name }}</td>
+                        <td>{{ $customer->role->name }}</td>
                         <td style="float: left; display: flex;">
-                            <form action="{{ route('user.edit', $user) }}" method="GET" id="editForm">
+                            <form action="{{ route('user.edit', $customer) }}" method="GET" id="editForm">
                                 @csrf
 
                                 <button title="Edit" type="submit" class="btn btn-success btn-edit">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </button>
                             </form>
-                            <form action="{{ route('user.destroy', $user) }}" method="POST" id="deleteForm">
+                            <form action="{{ route('user.destroy', $customer) }}" method="POST" id="deleteForm">
                                 @csrf
                                 @method('DELETE')
 
@@ -66,7 +65,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $users->links() }}
+        {{ $customers->links() }}
         <script>
             function confirmDelete() {
                 if (confirm('Bạn có chắc chắn muốn xóa?')) {

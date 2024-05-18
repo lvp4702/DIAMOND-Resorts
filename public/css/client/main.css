@@ -188,7 +188,7 @@ header {
 }
 
 .option:hover .option_avt {
-    box-shadow: 0 0 3px 2px var(--primary);
+    box-shadow: 0 0 6px 1px var(--primary);
 }
 
 .option:hover .option_icon

@@ -17,13 +17,21 @@ use App\Models\Order;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ClientController extends Controller
 {
     public function index()
     {
         $slides = Slide::all();
-        $rooms = Room::orderByDesc('id')->take(3)->get();
+        //3 phong nhieu don dat nhat
+        $rooms = Room::select('rooms.*', DB::raw('count(bookings.id) as booking_count'))
+            ->leftJoin('bookings', 'rooms.id', '=', 'bookings.room_id')
+            ->where('bookings.status', 'Đã thanh toán')
+            ->groupBy('rooms.id', 'rooms.name', 'rooms.price', 'rooms.describe', 'rooms.img1', 'rooms.img2', 'rooms.img3')
+            ->limit(3)
+            ->get();
+
         $latestNews = News::orderByDesc('id')->take(2)->get();
         $skienNoiBat = News::orderBy('id')->take(3)->get();
 

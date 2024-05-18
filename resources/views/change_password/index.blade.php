@@ -1,4 +1,7 @@
 @extends('client.layouts.app')
+
+@section('title', 'Đổi mật khẩu')
+
 @section('content')
     <h1 class="profile_title">THAY ĐỔI MẬT KHẨU</h1>
     <form action="{{ route('check_change_password', Auth::user()) }}" method="post" class="changePass_form">

@@ -1,6 +1,6 @@
 @extends('admin.layouts.app')
 @section('content')
-    <div class="row">
+    {{-- <div class="row">
         <div class="col">
             <div class="p-3 rounded shadow bg-info text-light d-flex justify-content-between">
                 <div>
@@ -36,6 +36,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    
+    </div> --}}
+
 @endsection

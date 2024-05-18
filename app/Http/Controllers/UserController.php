@@ -22,6 +22,20 @@ class UserController extends Controller
         return view('admin.user.index', compact('users'));
     }
 
+    public function employee()
+    {
+        $employees = User::where('role_id', 3)->orderByDesc('id')->paginate(5);
+
+        return view('admin.user.employee', compact('employees'));
+    }
+
+    public function customer()
+    {
+        $customers = User::where('role_id', 2)->orderByDesc('id')->paginate(5);
+
+        return view('admin.user.customer', compact('customers'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

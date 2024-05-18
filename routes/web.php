@@ -72,13 +72,16 @@ Route::get('/booking/processMoMo', [ClientController::class, 'process_momo'])->n
 //Admin
 Route::prefix('admin')->group(function () {
     //Cả admin và nvien
+    Route::get('/index', [AdminController::class, 'index'])->name('admin.index')->middleware('employee');
     Route::resource('/booking', BookingController::class)->middleware('employee');
     Route::resource('/comment', CommentController::class)->middleware('employee');
     Route::resource('/contact', ContactController::class)->middleware('employee');
-    Route::get('/b00king/thongKe', [BookingController::class, 'thongKe'])->name('booking.thongKe')->middleware('employee');
+    // Route::get('/b00king/thongKe', [BookingController::class, 'thongKe'])->name('booking.thongKe')->middleware('employee');
 
     //Chỉ admin
     Route::resource('/user', UserController::class)->middleware('admin');
+    Route::get('/employee', [UserController::class, 'employee'])->name('user.employee')->middleware('admin');
+    Route::get('/customer', [UserController::class, 'customer'])->name('user.customer')->middleware('admin');
     Route::resource('/room', RoomController::class)->middleware('admin');
     Route::resource('/news', NewsController::class)->middleware('admin');
     Route::resource('/slide', SlideController::class)->middleware('admin');

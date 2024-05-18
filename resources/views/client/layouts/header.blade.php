@@ -50,6 +50,9 @@
                     <div class="option">
                         @if (Auth::user()->avatar)
                             <img src="{{asset(Auth::user()->avatar)}}" class="option_avt">
+                        @else
+                            <img src="{{asset('images/avt-default.png')}}" class="option_avt">
+                        @endif
                             <div class="option_menu-avt">
                                 <a class="option_menu-item" href="{{ route('client.profile') }}">
                                     <i class="fa-solid fa-user"></i>
@@ -63,7 +66,7 @@
                                     </button>
                                 </form>
                             </div>
-                        @else
+                        {{-- @else
                             <i class="fa-solid fa-bars option_icon"></i>
                             <div class="option_menu">
                                 <a class="option_menu-item" href="{{ route('client.profile') }}">
@@ -78,7 +81,7 @@
                                     </button>
                                 </form>
                             </div>
-                        @endif
+                        @endif --}}
                     </div>
 
                 @else

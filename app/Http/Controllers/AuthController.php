@@ -28,7 +28,7 @@ class AuthController extends Controller
             if (Auth::user()->email_verified_at != null)
             {
                 if (Auth::user()->role_id == 1) {
-                    return redirect()->route('user.index')->with('login', 'Welcome ');
+                    return redirect()->route('admin.index')->with('login', 'Welcome ');
                 } else {
                     return redirect()->route('client.index');
                 }
@@ -56,7 +56,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('client.index')->with('message', 'Đăng xuất thành công !');
+        return redirect()->route('login')->with('message', 'Đăng xuất thành công !');
     }
 
     public function change_password()

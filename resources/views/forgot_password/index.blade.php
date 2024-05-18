@@ -24,6 +24,9 @@
     <div class="main-w3layouts-agileinfo">
         <!--form-stars-here-->
         <div class="wthree-form">
+            <a href="/" class="logo">
+                DIAMOND Resorts
+            </a>
             <h2>_ _ Forgot password _ _</h2>
             <form action="{{ route('check_forgot_password') }}" method="POST" id="">
                 @csrf

@@ -21,7 +21,7 @@
         </div>
 
         <div>
-            <p>Full name</p>
+            <p>Fullname</p>
             <input type="text" name="fullname" id="fullname" value="{{ old('fullname', Auth::user()->fullname) }}"
                 class="text_input @error('fullname') border-danger @enderror">
             @error('fullname')

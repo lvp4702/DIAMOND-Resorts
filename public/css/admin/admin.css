@@ -21,8 +21,8 @@
     font-weight: bold;
 }
 
-.form-control, .form-select
-{
+.form-control,
+.form-select {
     font-size: 1.3rem !important;
 }
 
@@ -58,6 +58,7 @@ header {
 
 .header_right {
     font-size: 1.4rem;
+    display: flex;
 }
 
 .header_right span {
@@ -111,6 +112,59 @@ header {
     width: 83%;
 }
 
+.admin_avt img
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: relative;
+}
+
+.admin_avt-placehoder
+{
+    display: none;
+    position: absolute;
+    color: #fff;
+    background-color: var(--black);
+    right: 20px;
+    top: 56px;
+    border-radius: 10px;
+    padding: 10px;
+    width: 15rem;
+    z-index: 2;
+    text-align: center;
+}
+
+.admin_avt:hover .admin_avt-placehoder
+{
+    display: block;
+}
+
+.thongBao
+{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e2e2e2;
+    margin-right: 14px;
+    position: relative;
+}
+
+.thongBao:hover
+{
+    cursor: pointer;
+    filter: brightness(90%);
+}
+
+.thongBao i
+{
+    font-size: 1.8rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 /* search */
 /* .search_input {
     width: 300px;
@@ -143,19 +197,18 @@ td {
     text-align: left;
 }
 
-td
-{
+td {
     max-width: 250px;
     word-wrap: break-word;
 }
+
 tr:nth-child(even) {
     background-color: #ecfcff;
 }
 
-#tbl_user img
-{
-    width:30px;
-    height:30px;
+#tbl_user img {
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     margin-right: 5px;
 }
@@ -236,8 +289,7 @@ tr:nth-child(even) {
     position: relative;
 }
 
-.item form
-{
+.item form {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -258,8 +310,7 @@ tr:nth-child(even) {
 
 }
 
-.btn_delete_slide
-{
+.btn_delete_slide {
     display: none;
 }
 
@@ -276,6 +327,31 @@ tr:nth-child(even) {
     background-color: rgb(255, 87, 87, 0.8);
     color: white;
     border-color: white;
+}
+
+#btnLogout
+{
+    position: absolute;
+    width: 100%;
+    font-size: 1.4rem;
+    color: var(--black);
+    padding: 14px 20px;
+    text-align: left;
+    bottom: 0;
+    background: none;
+}
+
+#btnLogout:hover
+{
+    color: var(--primary);
+    background-color: #ecfcff;
+    font-weight: bold;
+}
+
+#btnLogout i
+{
+    margin-right: 4px;
+    font-size: 1.6rem;
 }
 
 @keyframes botToTop {

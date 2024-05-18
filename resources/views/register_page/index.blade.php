@@ -23,6 +23,9 @@ function hideURLbar(){ window.scrollTo(0,1); } </script>
     <div class="main-w3layouts-agileinfo">
         <!--form-stars-here-->
         <div class="wthree-form">
+            <a href="/" class="logo">
+                DIAMOND Resorts
+            </a>
             <h2>_ _ Register now _ _</h2>
             <form id="registerForm" action="{{ route('register') }}" method="post">
                 @csrf
