@@ -39,8 +39,8 @@
                         <td>{{ $customer->fullname }}</td>
                         <td>{{ $customer->phoneNumber }}</td>
                         <td>{{ $customer->address }}</td>
-                        <td>{{ $customer->created_at->format('Y-m-d') }}</td>
-                        <td>{{ $customer->email_verified_at ? $customer->email_verified_at->format('Y-m-d') : 'Chưa xác minh' }}
+                        <td>{{ $customer->created_at->format('d-m-Y') }}</td>
+                        <td>{{ $customer->email_verified_at ? $customer->email_verified_at->format('d-m-Y') : 'Chưa xác minh' }}
                         </td>
                         <td>{{ $customer->role->name }}</td>
                         <td style="float: left; display: flex;">

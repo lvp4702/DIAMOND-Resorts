@@ -76,7 +76,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('/booking', BookingController::class)->middleware('employee');
     Route::resource('/comment', CommentController::class)->middleware('employee');
     Route::resource('/contact', ContactController::class)->middleware('employee');
-    // Route::get('/b00king/thongKe', [BookingController::class, 'thongKe'])->name('booking.thongKe')->middleware('employee');
+    Route::get('/booking/{id}/export-pdf}', [BookingController::class, 'XuatHoaDon'])->name('booking.xuatHoaDon')->middleware('employee');
 
     //Chỉ admin
     Route::resource('/user', UserController::class)->middleware('admin');

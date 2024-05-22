@@ -7,8 +7,8 @@ use App\Http\Requests\Booking\UpdateBookingRequest;
 use App\Models\Booking;
 use App\Models\User;
 use App\Models\Room;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Dompdf\Dompdf;
+use Carbon\Carbon;
 
 class BookingController extends Controller
 {
@@ -99,18 +99,28 @@ class BookingController extends Controller
         return redirect()->route('booking.index')->with('message', 'Xóa thành công !');
     }
 
-    public function thongKe()
+    public function XuatHoaDon($id)
     {
-        $bookings = Booking::select(
-            DB::raw('YEAR(created_at) as year'),
-            DB::raw('MONTH(created_at) as month'),
-            DB::raw('COUNT(id) as total_orders'),
-            DB::raw('SUM(total) as total_amount')
-        )
-            ->where('status', 'Đã thanh toán')
-            ->groupBy(DB::raw('YEAR(created_at)'), DB::raw('MONTH(created_at)'))
-            ->get();
+        $booking = Booking::findOrFail($id);
+        $printedAt = Carbon::now()->format('d-m-Y h:i:s');
 
-        return view('admin.booking.thongKe', compact('bookings'));
+        // Lấy dữ liệu của booking và truyền vào view
+        $data = [
+            'booking' => $booking,
+            'printedAt' => $printedAt
+        ];
+
+        // Tạo một đối tượng Dompdf
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml(view('admin.booking.hoaDon', $data));
+
+        // Render PDF
+        $dompdf->render();
+
+        // Tạo tên hóa đơn ngẫu nhiên
+        $hoaDon = 'Hóa đơn thanh toán_' . $booking->fullname . ' - ' . $booking->room->name . ' - ' . uniqid() . '.pdf';
+
+        // Xuất PDF
+        return $dompdf->stream($hoaDon);
     }
 }

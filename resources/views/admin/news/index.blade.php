@@ -27,7 +27,7 @@
                             <textarea cols="35" rows="4" style="resize: none; padding: 4px">{{ $item->content }}</textarea>
                         </td>
                         <td><img src="{{ asset($item->img1) }}" alt="Image" class="news_img"></td>
-                        <td>{{ $item->created_at }}</td>
+                        <td>{{ $item->created_at->format('d-m-Y') }}</td>
                         <td style="float: left; display: flex;">
                             <form action="{{ route('news.edit', $item) }}" method="GET" id="editForm">
                                 @csrf

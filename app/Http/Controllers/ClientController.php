@@ -78,7 +78,10 @@ class ClientController extends Controller
         $comments = Comment::where('room_id', $id)->orderByDesc('id')->paginate(5);
         $totalCmt = Comment::where('room_id', $id)->count();
 
-        return view('client.room_detail', compact('room', 'comments', 'totalCmt'));
+        // Lấy 3 phong khác phong hiện tại
+        $other_rooms = Room::where('id', '!=', $id)->orderBy('id')->take(3)->get();
+
+        return view('client.room_detail', compact('room', 'comments', 'totalCmt', 'other_rooms'));
     }
 
     public function booking(OrderRequest $request)

@@ -112,6 +112,10 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        if($user->role_id == 1)
+        {
+            return redirect()->back()->with('error', 'Không thể xóa tài khoản này!');
+        }
         $user->delete();
         return redirect()->route('user.index')->with('message', 'Xóa thành công!');
     }

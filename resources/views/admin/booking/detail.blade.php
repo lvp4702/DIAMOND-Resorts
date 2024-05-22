@@ -53,9 +53,13 @@
 
         <div class="mb-3 fs-4">
             <label for="date_created" class="form-label">Date created</label>
-            <input type="text" class="form-control" id="date_created" name="date_created" value="{{ $booking->created_at }}" disabled>
+            <input type="text" class="form-control" id="date_created" name="date_created" value="{{ $booking->created_at->format('d-m-Y') }}" disabled>
         </div>
 
         <a href="{{ route('booking.index') }}" class="btn btn-secondary">Back</a>
+        @if ($booking->status == "Đã thanh toán")
+        <a href="{{ route('booking.xuatHoaDon', ['id' => $booking->id]) }}" class="btn btn-primary">Xuất hóa đơn</a>
+        @endif
+
     </div>
 @endsection

@@ -40,8 +40,8 @@
                         <td>{{ $user->fullname }}</td>
                         <td>{{ $user->phoneNumber }}</td>
                         <td>{{ $user->address }}</td>
-                        <td>{{ $user->created_at->format('Y-m-d') }}</td>
-                        <td>{{ $user->email_verified_at ? $user->email_verified_at->format('Y-m-d') : 'Chưa xác minh' }}
+                        <td>{{ $user->created_at->format('d-m-Y') }}</td>
+                        <td>{{ $user->email_verified_at ? $user->email_verified_at->format('d-m-Y') : 'Chưa xác minh' }}
                         </td>
                         <td>{{ $user->role->name }}</td>
                         <td style="float: left; display: flex;">

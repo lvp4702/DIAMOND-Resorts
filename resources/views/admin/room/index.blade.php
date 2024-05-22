@@ -23,7 +23,7 @@
                     <tr>
                         <td>{{ $room->id }}</td>
                         <td>{{ $room->name }}</td>
-                        <td>{{ $room->price }}</td>
+                        <td>{{ number_format($room->price, 0, ',', '.') }}</td>
                         <td>
                             <textarea cols="40" rows="4" style="resize: none; padding: 4px">{{ $room->describe }}</textarea>
                         </td>

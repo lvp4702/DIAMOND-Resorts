@@ -1446,6 +1446,28 @@ header {
     line-height: 2.4rem;
 }
 
+.room_other
+{
+    width: 80%;
+    margin: auto;
+}
+
+.room_other p
+{
+    font-size: 2rem;
+    color: var(--black);
+    font-weight: bold;
+}
+
+.room_other_container
+{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .room-booking {
     width: 32%;
     color: #fff;
@@ -1594,7 +1616,7 @@ header {
 {
     color: var(--black);
     font-size: 1.7rem;
-    margin-left: 5px;
+    margin-left: 8px;
 }
 
 .comments_item_time

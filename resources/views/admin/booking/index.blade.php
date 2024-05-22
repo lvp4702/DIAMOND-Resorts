@@ -16,7 +16,7 @@
                     <th>Check-out date</th>
                     <th>Amount of people</th>
                     <th>Room</th>
-                    <th>Total</th>
+                    <th>Total(đ)</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>

@@ -44,7 +44,6 @@
                 <a href="{{ route('client.contact') }}" class="{{ request()->is('contact') ? 'active' : '' }}">LIÊN HỆ</a>
             </nav>
             <div class="header_main_right">
-                {{-- <i class="fa-solid fa-magnifying-glass search_icon"></i> --}}
                 @if (Auth::check())
 
                     <div class="option">
@@ -58,21 +57,12 @@
                                     <i class="fa-solid fa-user"></i>
                                     <p>Thông tin cá nhân</p>
                                 </a>
-                                <form action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button class="option_menu-item" type="submit">
-                                        <i class="fa-solid fa-right-from-bracket"></i>
-                                        <p>Đăng xuất</p>
-                                    </button>
-                                </form>
-                            </div>
-                        {{-- @else
-                            <i class="fa-solid fa-bars option_icon"></i>
-                            <div class="option_menu">
-                                <a class="option_menu-item" href="{{ route('client.profile') }}">
-                                    <i class="fa-solid fa-user"></i>
-                                    <p>Thông tin cá nhân</p>
+                                @if (Auth::user()->role_id == 1 || Auth::user()->role_id == 3)
+                                <a class="option_menu-item" href="{{ route('admin.index') }}">
+                                    <i class="fa-solid fa-user-tie"></i>
+                                    <p>Admin page</p>
                                 </a>
+                                @endif
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     <button class="option_menu-item" type="submit">
@@ -81,7 +71,7 @@
                                     </button>
                                 </form>
                             </div>
-                        @endif --}}
+
                     </div>
 
                 @else

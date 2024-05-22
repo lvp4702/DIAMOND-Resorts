@@ -69,8 +69,7 @@ class AuthController extends Controller
         $password = ['password' => bcrypt($request->new_password)];
         if ($user->update($password))
         {
-            Auth::logout();
-            return redirect()->route('formLogin')->with('message', 'Đổi mật khẩu thành công, vui lòng đăng nhập lại !');
+            return redirect()->route('client.index')->with('message', 'Đổi mật khẩu thành công !');
         }
     }
 

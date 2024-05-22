@@ -39,8 +39,8 @@
                         <td>{{ $employee->fullname }}</td>
                         <td>{{ $employee->phoneNumber }}</td>
                         <td>{{ $employee->address }}</td>
-                        <td>{{ $employee->created_at->format('Y-m-d') }}</td>
-                        <td>{{ $employee->email_verified_at ? $employee->email_verified_at->format('Y-m-d') : 'Chưa xác minh' }}
+                        <td>{{ $employee->created_at->format('d-m-Y') }}</td>
+                        <td>{{ $employee->email_verified_at ? $employee->email_verified_at->format('d-m-Y') : 'Chưa xác minh' }}
                         </td>
                         <td>{{ $employee->role->name }}</td>
                         <td style="float: left; display: flex;">

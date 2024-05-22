@@ -53,7 +53,7 @@
                 </div>
 
                 <h1 class="room_detail-name">{{ $room->name }}</h1>
-                <p class="room_detail-price"><span>{{ number_format($room->price, 0, ',', '.') }}đ</span> / đêm</p>
+                <p class="room_detail-price"><span>{{ number_format($room->price, 0, ',', '.') }}đ</span> / ngày</p>
                 <div class="room_detail-describe">{!! $room->describe !!}</div>
 
                 <form method="POST" class="comment_form" action="{{ route('client.cmt') }}">
@@ -111,14 +111,14 @@
                     <input type="hidden" name="room_id" value="{{ $room->id }}">
 
                     <p>Họ & Tên</p>
-                    <input type="text" name="fullname" value="{{ old('fullname') }}"
+                    <input type="text" name="fullname" value="{{ old('fullname', Auth::check() ? Auth::user()->fullname : '') }}"
                         class="text_input @error('fullname') border-danger @enderror">
                     @error('fullname')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
                     <p>Số điện thoại</p>
-                    <input type="text" name="phoneNumber" value="{{ old('phoneNumber') }}"
+                    <input type="text" name="phoneNumber" value="{{ old('phoneNumber', Auth::check() ? Auth::user()->phoneNumber : '') }}"
                         class="text_input @error('phoneNumber') border-danger @enderror">
                     @error('phoneNumber')
                         <span class="text-danger">{{ $message }}</span>
@@ -179,6 +179,27 @@
                     <p>Chưa có đánh giá !</p>
                 </div>
             @endif
+        </div>
+
+        <div class="room_other">
+            <p>CÓ THỂ BẠN QUAN TÂM</p>
+            <div class="room_other_container">
+                @foreach ($other_rooms as $other_room)
+                    <div class="room_2-item">
+                        <div class="room_2-item-img">
+                            <img src="{{ asset($other_room->img1) }}" alt="">
+                        </div>
+                        <div class="room_2-item-content">
+                            <h1>{{ $other_room->name }}</h1>
+                            <div class="divider"></div>
+                            <div class="room_2-item-bot">
+                                <span>{{ number_format($other_room->price, 0, ',', '.') }}đ</span>
+                                <a href="{{ route('client.room_detail', $other_room->id) }}" class="button">Xem chi tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </div>
 
