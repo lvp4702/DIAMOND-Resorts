@@ -2,58 +2,47 @@
 @section('content')
     <h1 class="modal-title fw-bolder text-center" id="modal-add-label">Booking information</h1>
     <div style="width: 700px; margin: auto;">
-        <div class="mb-3 fs-4">
-            <label for="fullname" class="form-label">Fullname</label>
-            <input type="text" class="form-control" id="fullname" name="fullname" value="{{ $booking->fullname }}" disabled>
+        <div class="info">
+            <label>Fullname:</label>
+            <b>{{ $booking->fullname }}</b>
         </div>
 
-        <div class="mb-3 fs-4">
-            <label for="phoneNumber" class="form-label">Phone number</label>
-            <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" value="{{ $booking->phoneNumber }}" disabled>
+        <div class="info">
+            <label>Phone number:</label>
+            <b>{{ $booking->phoneNumber }}</b>
         </div>
 
-        <div class="mb-3 fs-4">
-            <label for="check_inDate" class="form-label">Check-in date</label>
-            <input type="date" class="form-control" id="check_inDate" name="check_inDate"
-                value="{{ $booking->check_inDate }}" disabled>
+        @if ($booking->user_id)
+        <div class="info">
+            <label>Username:</label>
+            <b>{{ $booking->user->username }}</b>
+        </div>
+        @endif
+
+        <table>
+            <tr>
+                <th>Room</th>
+                <th>Check-in date</th>
+                <th>Check-out date</th>
+                <th>Amount of people</th>
+            </tr>
+            <tr>
+                <td>{{ $booking->room->name }}</td>
+                <td>{{ $booking->check_inDate }}</td>
+                <td>{{ $booking->check_outDate }}</td>
+                <td>{{ $booking->amountOfPeople }}</td>
+            </tr>
+        </table>
+        <p style="text-align:right;" class="info">Total: <b>{{ number_format($booking->total, 0, ',', '.') }}đ</b></p>
+
+        <div class="info">
+            <label>Status:</label>
+            <b>{{ $booking->status }}</b>
         </div>
 
-        <div class="mb-3 fs-4">
-            <label for="check_outDate" class="form-label">Check-out date</label>
-            <input type="date" class="form-control" id="check_outDate" name="check_outDate"
-                value="{{ $booking->check_outDate }}" disabled>
-        </div>
-
-        <div class="mb-3 fs-4">
-            <label for="amountOfPeople" class="form-label">Amount of people</label>
-            <input type="text" class="form-control" id="amountOfPeople" name="amountOfPeople"
-                value="{{ $booking->amountOfPeople }}" disabled>
-        </div>
-
-        <div class="mb-3 fs-4">
-            <label for="total" class="form-label">Total</label>
-            <input type="text" class="form-control" id="total" name="total" value="{{ number_format($booking->total, 0, ',', '.') }}đ" disabled>
-        </div>
-
-        <div class="mb-3 fs-4">
-            <label for="status" class="form-label">Status</label>
-            <input type="text" class="form-control" id="status" name="status" value="{{ $booking->status }}" disabled>
-        </div>
-
-        <div class="mb-3 fs-4">
-            <label for="user" class="form-label">Username</label>
-            <input name="user" id="user" class="form-control"
-                value="{{ $booking->user_id ? $booking->user->username : '' }}" disabled>
-        </div>
-
-        <div class="mb-3 fs-4">
-            <label for="room" class="form-label">Room</label>
-            <input type="text" class="form-control" id="room" name="room" value="{{ $booking->room->name }}" disabled>
-        </div>
-
-        <div class="mb-3 fs-4">
-            <label for="date_created" class="form-label">Date created</label>
-            <input type="text" class="form-control" id="date_created" name="date_created" value="{{ $booking->created_at->format('d-m-Y') }}" disabled>
+        <div class="info">
+            <label>Booking date:</label>
+            <b>{{ $booking->created_at }}</b>
         </div>
 
         <a href="{{ route('booking.index') }}" class="btn btn-secondary">Back</a>
@@ -62,4 +51,26 @@
         @endif
 
     </div>
+    <style>
+        .info {
+            margin-bottom: 12px;
+            font-size: 1.4rem;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+        }
+
+        tr {
+            border-bottom: 1px solid #ddd;
+            height: 50px;
+        }
+
+        th {
+            text-align: left;
+        }
+    </style>
 @endsection
