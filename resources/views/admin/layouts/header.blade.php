@@ -6,12 +6,9 @@
             </a>
         </div>
         <div class="header_right">
-            <div class="thongBao">
-                <i class="fa-solid fa-bell"></i>
-            </div>
             <div class="admin_avt">
+                <p>{{ Auth::user()->fullname }}</p>
                 <img src="{{ asset(Auth::user()->avatar) }}">
-                <p class="admin_avt-placehoder">{{ Auth::user()->fullname }}</p>
             </div>
         </div>
     </div>

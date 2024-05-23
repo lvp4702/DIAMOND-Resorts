@@ -47,7 +47,7 @@
             <div class="home_3-top">
                 <div class="home_3-top-left">
                     <h1><span>PHÒNG NGHỈ</span> HIỆN ĐẠI</h1>
-                    <p>Dưới đây là một số phòng hot nhất hiện tại</p>
+                    <p>Dưới đây là một số phòng <b style="font-size: 1.6rem;">hot nhất</b> hiện tại</p>
                 </div>
                 <div class="home_3-top-right">
                     <a href="{{ route('client.rooms') }}" class="button">XEM TẤT CẢ</a>

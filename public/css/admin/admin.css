@@ -59,6 +59,7 @@ header {
 .header_right {
     font-size: 1.4rem;
     display: flex;
+
 }
 
 .header_right span {
@@ -112,71 +113,25 @@ header {
     width: 83%;
 }
 
+.admin_avt
+{
+    display: flex;
+    align-items: center;
+}
+
+.admin_avt p
+{
+    font-weight: bold;
+    margin-right: 8px;
+    margin-top: 12px;
+}
+
 .admin_avt img
 {
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    position: relative;
 }
-
-.admin_avt-placehoder
-{
-    display: none;
-    position: absolute;
-    color: #fff;
-    background-color: var(--black);
-    right: 20px;
-    top: 56px;
-    border-radius: 10px;
-    padding: 10px;
-    width: 15rem;
-    z-index: 2;
-    text-align: center;
-}
-
-.admin_avt:hover .admin_avt-placehoder
-{
-    display: block;
-}
-
-.thongBao
-{
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #e2e2e2;
-    margin-right: 14px;
-    position: relative;
-}
-
-.thongBao:hover
-{
-    cursor: pointer;
-    filter: brightness(90%);
-}
-
-.thongBao i
-{
-    font-size: 1.8rem;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-/* search */
-/* .search_input {
-    width: 300px;
-    height: 34px;
-    border: 1px solid #ccc;
-    padding: 14px;
-    font-size: 1.3rem;
-}
-
-.search_input:focus {
-    box-shadow: 0 0 4px #bebebe;
-} */
 
 .tbl {
     width: 100%;
@@ -353,6 +308,31 @@ tr:nth-child(even) {
     margin-right: 4px;
     font-size: 1.6rem;
 }
+
+/* trang index */
+.admin_content_left
+{
+    width: 70%;
+}
+
+.chart
+{
+    margin-top: 20px;
+}
+
+.chart p
+{
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.admin_col_hover:hover .fa-users,
+.admin_col_hover:hover .fa-scroll,
+.admin_col_hover:hover .fa-square-poll-vertical
+{
+    scale: 1.1;
+}
+
 
 @keyframes botToTop {
     0% {
