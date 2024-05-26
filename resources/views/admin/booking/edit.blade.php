@@ -25,20 +25,12 @@
 
         <div class="mb-3 fs-4">
             <label for="check_inDate" class="form-label">Check-in date</label>
-            <input type="date" class="form-control @error('check_inDate') border-danger @enderror" id="check_inDate"
-                name="check_inDate" value="{{ $booking->check_inDate }}">
-            @error('check_inDate')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
+            <input type="date" class="form-control" id="check_inDate" name="check_inDate" value="{{ $booking->check_inDate }}" disabled>
         </div>
 
         <div class="mb-3 fs-4">
             <label for="check_outDate" class="form-label">Check-out date</label>
-            <input type="date" class="form-control @error('check_outDate') border-danger @enderror" id="check_outDate"
-                name="check_outDate" value="{{ $booking->check_outDate }}">
-            @error('check_outDate')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
+            <input type="date" class="form-control" id="check_outDate" name="check_outDate" value="{{ $booking->check_outDate }}" disabled>
         </div>
 
         <div class="mb-3 fs-4">
@@ -52,11 +44,7 @@
 
         <div class="mb-3 fs-4">
             <label for="total" class="form-label">Total</label>
-            <input type="text" class="form-control @error('total') border-danger @enderror" id="total"
-                name="total" value="{{ old('total', $booking->total) }}">
-            @error('total')
-                <span class="text-danger">{{ $message }}</span>
-            @enderror
+            <input type="text" class="form-control" id="total"name="total" value="{{ number_format($booking->total, 0, ',', '.') }}" disabled>
         </div>
 
         <div class="mb-3 fs-4">
@@ -74,12 +62,7 @@
 
         <div class="mb-3 fs-4">
             <label for="room_id" class="form-label">Room</label>
-            <select name="room_id" id="room_id" class="form-select">
-                <option>Choose the room</option>
-                @foreach ($rooms as $room)
-                    <option value="{{ $room->id }}" {{ $booking->room_id == $room->id ? "selected" : "" }}>{{ $room->name }}</option>
-                @endforeach
-            </select>
+            <input name="room_id" id="room_id" class="form-control" value="{{ $booking->room->name }}" disabled>
         </div>
 
         <button type="submit" class="btn btn-primary ms-2">Update</button>

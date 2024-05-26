@@ -2,7 +2,6 @@
 @section('content')
     <div class="content_top">
         <a class="btn btn-outline-info" href="{{ route('comment.daPhanHoi') }}" style="float: left;">Đã phản hồi</a>
-        <a class="btn btn-outline-info" href="{{ route('comment.chuaPhanHoi') }}" style="float: left;">Chưa phản hồi</a>
     </div>
     <div id="list_comments">
         <table class="tbl" id="tbl_comments">
@@ -20,7 +19,7 @@
             </thead>
 
             <tbody>
-                @foreach ($comments as $comment)
+                @foreach ($comments_chuaPhanHoi as $comment)
                     <tr>
                         <td>{{ $comment->id }}</td>
                         <td>{{ $comment->user->username }}</td>
@@ -51,7 +50,7 @@
                 @endforeach
             </tbody>
         </table>
-        {{ $comments->links() }}
+        {{ $comments_chuaPhanHoi->links() }}
         <script>
             function confirmDelete() {
                 if (confirm('Bạn có chắc chắn muốn xóa?')) {

@@ -4,7 +4,6 @@
         <a class="btn btn-primary" href="{{ route('booking.create') }}">
             <i class="fa-solid fa-plus"></i> Add new
         </a>
-        <a class="btn btn-outline-info" href="{{ route('booking.paid') }}" style="float: left;">Đã thanh toán</a>
         <a class="btn btn-outline-info" href="{{ route('booking.unpaid') }}" style="float: left;">Chưa thanh toán</a>
     </div>
     <div id="list_booking">
@@ -25,19 +24,19 @@
             </thead>
 
             <tbody>
-                @foreach ($bookings as $booking)
+                @foreach ($bookingsPaid as $item)
                     <tr>
-                        <td>{{ $booking->id }}</td>
-                        <td>{{ $booking->fullname }}</td>
-                        <td>{{ $booking->phoneNumber }}</td>
-                        <td>{{ $booking->check_inDate }}</td>
-                        <td>{{ $booking->check_outDate }}</td>
-                        <td>{{ $booking->amountOfPeople }}</td>
-                        <td>{{ $booking->room->name }}</td>
-                        <td>{{ number_format($booking->total, 0, ',', '.') }}</td>
-                        <td>{{ $booking->status }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->fullname }}</td>
+                        <td>{{ $item->phoneNumber }}</td>
+                        <td>{{ $item->check_inDate }}</td>
+                        <td>{{ $item->check_outDate }}</td>
+                        <td>{{ $item->amountOfPeople }}</td>
+                        <td>{{ $item->room->name }}</td>
+                        <td>{{ number_format($item->total, 0, ',', '.') }}</td>
+                        <td>{{ $item->status }}</td>
                         <td style="float: left; display: flex;">
-                            <form action="{{ route('booking.edit', $booking) }}" method="GET" id="editForm">
+                            <form action="{{ route('booking.edit', $item) }}" method="GET" id="editForm">
                                 @csrf
 
                                 <button title="Edit" type="submit" class="btn btn-outline-success btn-edit">
@@ -45,7 +44,7 @@
                                 </button>
                             </form>
 
-                            <form action="{{ route('booking.destroy', $booking) }}" method="POST" id="deleteForm">
+                            <form action="{{ route('booking.destroy', $item) }}" method="POST" id="deleteForm">
                                 @csrf
                                 @method('DELETE')
 
@@ -54,7 +53,7 @@
                                 </button>
                             </form>
 
-                            <form action="{{ route('booking.show', $booking) }}" method="GET" id="detailForm">
+                            <form action="{{ route('booking.show', $item) }}" method="GET" id="detailForm">
                                 @csrf
 
                                 <button title="Detail" type="submit" class="btn btn-outline-warning btn-detail">
@@ -67,7 +66,7 @@
             </tbody>
 
         </table>
-        {{ $bookings->links() }}
+        {{ $bookingsPaid->links() }}
         <script>
             function confirmDelete() {
                 if (confirm('Bạn có chắc chắn muốn xóa?')) {

@@ -64,6 +64,7 @@ Route::get('/news/{id}', [ClientController::class, 'news_detail'])->name('client
 Route::get('/contact', [ClientController::class, 'contact'])->name('client.contact');
 Route::post('/contact', [ClientController::class, 'send_contact'])->name('client.send_contact');
 Route::post('/cmt', [ClientController::class, 'comment'])->name('client.cmt');
+Route::post('/searchRooms', [ClientController::class, 'searchRooms'])->name('searchRooms');
 
 Route::post('/booking', [ClientController::class, 'booking'])->name('client.booking');
 Route::get('/booking/momo/{order}', [ClientController::class, 'momo'])->name('client.booking.momo');
@@ -73,10 +74,17 @@ Route::get('/booking/processMoMo', [ClientController::class, 'process_momo'])->n
 Route::prefix('admin')->group(function () {
     //Cả admin và nvien
     Route::get('/index', [AdminController::class, 'index'])->name('admin.index')->middleware('employee');
+
     Route::resource('/booking', BookingController::class)->middleware('employee');
+    Route::get('/bookings-paid', [BookingController::class, 'bookingsPaid'])->name('booking.paid')->middleware('employee');
+    Route::get('/bookings-unpaid', [BookingController::class, 'bookingsUnpaid'])->name('booking.unpaid')->middleware('employee');
+    Route::get('/booking/{id}/export-pdf', [BookingController::class, 'XuatHoaDon'])->name('booking.xuatHoaDon')->middleware('employee');
+
     Route::resource('/comment', CommentController::class)->middleware('employee');
+    Route::get('/comment-daPhanHoi', [CommentController::class, 'daPhanHoi'])->name('comment.daPhanHoi')->middleware('employee');
+    Route::get('/comment-chuaPhanHoi', [CommentController::class, 'chuaPhanHoi'])->name('comment.chuaPhanHoi')->middleware('employee');
+
     Route::resource('/contact', ContactController::class)->middleware('employee');
-    Route::get('/booking/{id}/export-pdf}', [BookingController::class, 'XuatHoaDon'])->name('booking.xuatHoaDon')->middleware('employee');
 
     //Chỉ admin
     Route::resource('/user', UserController::class)->middleware('admin');

@@ -30,14 +30,14 @@
             <i class="fa-solid fa-chevron-up"></i>
         </div>
 
-        <div>
+        {{-- <div>
             <df-messenger
             intent="WELCOME"
             chat-title="DIAMOND_Resorts"
             agent-id="cb24ac73-2441-4f42-8c77-00302a2f251e"
             language-code="en"
             ></df-messenger>
-        </div>
+        </div> --}}
     </div>
 </body>
 <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>

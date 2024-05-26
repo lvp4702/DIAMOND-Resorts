@@ -42,12 +42,10 @@ class Booking extends Model
             DB::raw('MONTH(created_at) as month'),
             DB::raw('SUM(total) as revenue')
         )
-        ->where('status', 'Đã thanh toán')
-        ->groupBy('year', 'month')
-        ->orderBy('year', 'asc')
-        ->orderBy('month', 'asc')
-        ->get();
+            ->where('status', 'Đã thanh toán')
+            ->groupBy('year', 'month')
+            ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
+            ->get();
     }
 }
-
-

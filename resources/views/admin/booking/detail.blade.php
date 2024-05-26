@@ -42,7 +42,7 @@
 
         <div class="info">
             <label>Booking date:</label>
-            <b>{{ $booking->created_at }}</b>
+            <b>{{ $booking->created_at->format('d-m-Y H:i:s') }}</b>
         </div>
 
         <a href="{{ route('booking.index') }}" class="btn btn-secondary">Back</a>

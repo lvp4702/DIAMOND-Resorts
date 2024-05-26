@@ -6,6 +6,7 @@ use App\Http\Requests\Comment\CommentRequest;
 use App\Http\Requests\Contact\ContactRequest;
 use App\Http\Requests\Order\OrderRequest;
 use App\Http\Requests\Profile\ProfileRequest;
+use App\Http\Requests\SearchRooms\SearchRoomsRequest;
 use App\Models\Booking;
 use App\Models\Comment;
 use App\Models\Contact;
@@ -70,6 +71,40 @@ class ClientController extends Controller
     {
         $rooms = Room::all();
         return view('client.rooms', compact('rooms'));
+    }
+
+    public function searchRooms(SearchRoomsRequest $request)
+    {
+        // Lấy dữ liệu từ request
+        $fromDate = $request->input('from_date');
+        $toDate = $request->input('to_date');
+
+        // Truy vấn các phòng chưa có đơn đặt trong khoảng thời gian đã chọn
+        $rooms = Room::where(function ($query) use ($fromDate, $toDate) {
+            // Các phòng không có đơn đặt nào đã thanh toán trong khoảng đã chọn
+            $query->whereDoesntHave('bookings', function ($query) use ($fromDate, $toDate) {
+                $query->where('status', '=', 'Đã thanh toán')
+                ->where(function ($q) use ($fromDate, $toDate) {
+                    $q->where('check_inDate', '>=', $fromDate)->where('check_inDate', '<', $toDate)
+                        ->orWhere('check_outDate', '>', $fromDate)->where('check_outDate', '<=', $toDate);
+                })->orWhere(function ($q) use ($fromDate, $toDate) {
+                    $q->where('check_inDate', '<', $fromDate)->where('check_outDate', '>', $fromDate)
+                        ->orWhere('check_inDate', '<', $toDate)->where('check_outDate', '>', $toDate);
+                });
+            })
+            // Hoặc các phòng không có đơn nào trong khoảng thời gian đã chọn
+            ->orWhereDoesntHave('bookings', function ($query) use ($fromDate, $toDate) {
+                $query->where(function ($q) use ($fromDate, $toDate) {
+                    $q->where('check_inDate', '>=', $fromDate)->where('check_inDate', '<', $toDate)
+                        ->orWhere('check_outDate', '>', $fromDate)->where('check_outDate', '<=', $toDate);
+                })->orWhere(function ($q) use ($fromDate, $toDate) {
+                    $q->where('check_inDate', '<', $fromDate)->where('check_outDate', '>', $fromDate)
+                        ->orWhere('check_inDate', '<', $toDate)->where('check_outDate', '>', $toDate);
+                });
+            });
+        })->get();
+
+        return view('client.searchRooms', compact('rooms', 'fromDate', 'toDate'));
     }
 
     public function room_detail($id)

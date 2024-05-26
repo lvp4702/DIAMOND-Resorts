@@ -19,6 +19,20 @@ class CommentController extends Controller
         return view('admin.comments.index', compact('comments'));
     }
 
+    public function daPhanHoi()
+    {
+        $comments_daPhanHoi = Comment::orderByDesc('id')->whereNotNull('reply')->paginate(5);
+
+        return view('admin.comments.daPhanHoi', compact('comments_daPhanHoi'));
+    }
+
+    public function chuaPhanHoi()
+    {
+        $comments_chuaPhanHoi = Comment::orderByDesc('id')->whereNull('reply')->paginate(5);
+
+        return view('admin.comments.chuaPhanHoi', compact('comments_chuaPhanHoi'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -22,6 +22,20 @@ class BookingController extends Controller
         return view('admin.booking.index', compact('bookings'));
     }
 
+    public function bookingsPaid()
+    {
+        $bookingsPaid = Booking::orderByDesc('id')->where('status', 'Đã thanh toán')->paginate(5);
+
+        return view('admin.booking.bookingsPaid', compact('bookingsPaid'));
+    }
+
+    public function bookingsUnpaid()
+    {
+        $bookingsUnpaid = Booking::orderByDesc('id')->where('status', 'Chưa thanh toán')->paginate(5);
+
+        return view('admin.booking.bookingsUnpaid', compact('bookingsUnpaid'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

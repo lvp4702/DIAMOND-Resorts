@@ -10,15 +10,28 @@
 
     <div class="room_2">
         <div class="room_2_search">
-            <form id="searchForm" action="{{ route('searchRooms') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <label for="from_date"><b>Phòng còn trống:</b> Từ</label>
-                <input type="date" name="from_date" id="from_date" value="{{ old('from_date') }}" class="@error('from_date') border-danger @enderror">
-                <label for="to_date">-</label>
-                <input type="date" name="to_date" id="to_date" value="{{ old('to_date') }}" class="@error('to_date') border-danger @enderror">
-                <button type="submit" class="search_button">Tìm kiếm</button>
-            </form>
+            <div class="room_2_search_left">
+                <form id="searchForm" action="{{ route('searchRooms') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <label for="from_date"><b>Phòng còn trống:</b> Từ</label>
+                    <input type="date" name="from_date" id="from_date" value="{{ old('from_date', $fromDate) }}"
+                        class="@error('from_date') border-danger @enderror">
+                    <label for="to_date">-</label>
+                    <input type="date" name="to_date" id="to_date" value="{{ old('to_date', $toDate) }}"
+                        class="@error('to_date') border-danger @enderror">
+                    <button type="submit" class="search_button">Tìm kiếm</button>
+                </form>
+            </div>
+            <div class="room_2_search_right">
+                <button class="search_button"><a href="{{ route('client.rooms') }}">Xem tất cả</a></button>
+            </div>
         </div>
+        @if (count($rooms) > 0)
+            <h1 style="width: 80%; margin: auto; margin-bottom: 10px"><i class="fa-solid fa-exclamation"></i> Kết quả tìm
+                kiếm({{ count($rooms) }})</h1>
+        @else
+            <h1 style="width: 80%; margin: auto; margin-bottom: 10px"><i class="fa-solid fa-triangle-exclamation"></i> Không có kết quả</h1>
+        @endif
         <div class="room_2-list">
             @foreach ($rooms as $room)
                 <div class="room_2-item">
