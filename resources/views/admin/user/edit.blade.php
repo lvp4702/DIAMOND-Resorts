@@ -50,6 +50,11 @@
         </div>
 
         <div class="mb-3 fs-4">
+            <label for="point" class="form-label">Point</label>
+            <input type="text" class="form-control" id="point" name="point" value="{{ $user->point }}" disabled>
+        </div>
+
+        <div class="mb-3 fs-4">
             <label for="role_id" class="form-label">Role</label>
             <select name="role_id" id="role_id" class="form-select">
                 @foreach ($roles as $role)
@@ -61,7 +66,6 @@
         <button type="submit" class="btn btn-primary ms-2">Update</button>
         <a href="{{ route('user.index') }}" class="btn btn-secondary">Back</a>
     </form>
-
 
     <script>
         //render img

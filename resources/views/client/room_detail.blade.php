@@ -145,6 +145,16 @@
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
 
+                    @if (Auth::check())
+                        <p>Điểm tích lũy</p>
+                        <input type="number" name="point" value="{{ old('point') }}"
+                            class="text_input @error('point') border-danger @enderror">
+                        @error('point')
+                            <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                        <i style="font-size: 1.2rem; display: block; margin-top: 2px;">*Tối đa <b>{{ number_format(Auth::user()->point, 0, ',', '.') }}</b> điểm ( tương đương <b>{{ number_format(Auth::user()->point, 0, ',', '.') }}</b>đ )</i>
+                    @endif
+
                     <button type="submit">GỬI</button>
                 </form>
             </div>

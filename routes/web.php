@@ -85,11 +85,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/comment-chuaPhanHoi', [CommentController::class, 'chuaPhanHoi'])->name('comment.chuaPhanHoi')->middleware('employee');
 
     Route::resource('/contact', ContactController::class)->middleware('employee');
+    Route::resource('/user', UserController::class)->middleware('employee');
+
+    Route::get('/customer', [UserController::class, 'customer'])->name('user.customer')->middleware('employee');
 
     //Chỉ admin
-    Route::resource('/user', UserController::class)->middleware('admin');
     Route::get('/employee', [UserController::class, 'employee'])->name('user.employee')->middleware('admin');
-    Route::get('/customer', [UserController::class, 'customer'])->name('user.customer')->middleware('admin');
     Route::resource('/room', RoomController::class)->middleware('admin');
     Route::resource('/news', NewsController::class)->middleware('admin');
     Route::resource('/slide', SlideController::class)->middleware('admin');

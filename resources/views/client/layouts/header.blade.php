@@ -34,7 +34,7 @@
 
         <div class="header_main">
             <a href="/" class="logo">
-                DIAMOND Resorts
+                DIAMOND Resort
             </a>
             <nav class="navbar">
                 <a href="{{ route('client.index') }}" class="{{ request()->is('/') ? 'active' : '' }}">TRANG CHỦ</a>

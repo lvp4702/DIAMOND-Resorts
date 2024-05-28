@@ -43,6 +43,11 @@
         </div>
 
         <div class="mb-3 fs-4">
+            <label for="point" class="form-label">Point</label>
+            <input type="text" class="form-control" id="point" name="point" value="{{ number_format($booking->pointUsed, 0, ',', '.') }}" disabled>
+        </div>
+
+        <div class="mb-3 fs-4">
             <label for="total" class="form-label">Total</label>
             <input type="text" class="form-control" id="total"name="total" value="{{ number_format($booking->total, 0, ',', '.') }}" disabled>
         </div>

@@ -81,6 +81,7 @@
         </tr>
     </table>
 
+    <p style="text-align:right;">Điểm sử dụng: <b>{{ number_format($booking->pointUsed, 0, ',', '.') }}</b></p>
     <p style="text-align:right;">Tổng cộng: <b>{{ number_format($booking->total, 0, ',', '.') }}đ</b></p>
 
 </body>

@@ -19,6 +19,7 @@
                     <th>Address</th>
                     <th>Date created</th>
                     <th>Date verified</th>
+                    <th>Point</th>
                     <th>Role</th>
                     <th>Action</th>
                 </tr>
@@ -43,6 +44,7 @@
                         <td>{{ $user->created_at->format('d-m-Y') }}</td>
                         <td>{{ $user->email_verified_at ? $user->email_verified_at->format('d-m-Y') : 'Chưa xác minh' }}
                         </td>
+                        <td>{{ number_format($user->point, 0, ',', '.') }}</td>
                         <td>{{ $user->role->name }}</td>
                         <td style="float: left; display: flex;">
                             <form action="{{ route('user.edit', $user) }}" method="GET" id="editForm">

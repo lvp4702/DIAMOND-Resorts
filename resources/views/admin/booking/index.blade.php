@@ -16,7 +16,7 @@
                     <th>Phone number</th>
                     <th>Check-in date</th>
                     <th>Check-out date</th>
-                    <th>Amount of people</th>
+                    <th>Point used</th>
                     <th>Room</th>
                     <th>Total(đ)</th>
                     <th>Status</th>
@@ -32,7 +32,7 @@
                         <td>{{ $booking->phoneNumber }}</td>
                         <td>{{ $booking->check_inDate }}</td>
                         <td>{{ $booking->check_outDate }}</td>
-                        <td>{{ $booking->amountOfPeople }}</td>
+                        <td>{{ number_format($booking->pointUsed, 0, ',', '.') }}</td>
                         <td>{{ $booking->room->name }}</td>
                         <td>{{ number_format($booking->total, 0, ',', '.') }}</td>
                         <td>{{ $booking->status }}</td>

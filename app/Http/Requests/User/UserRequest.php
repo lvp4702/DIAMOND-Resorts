@@ -27,7 +27,7 @@ class UserRequest extends FormRequest
             'email' => 'required|unique:users|email',
             'fullname' => 'required',
             'phoneNumber' => 'required|size:10',
-            'address' => 'required',
+            'address' => 'required'
         ];
     }
     public function messages(): array

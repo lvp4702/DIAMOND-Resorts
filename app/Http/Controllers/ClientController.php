@@ -143,11 +143,25 @@ class ClientController extends Controller
         $startDate = Carbon::parse($checkInDate);
         $endDate = Carbon::parse($checkOutDate);
         $numberOfDays = $startDate->diffInDays($endDate);
-        $total = $room->price * $numberOfDays;
+
+        if(Auth::check())
+        {
+            $point_used = $request->point;
+            $total = $room->price * $numberOfDays - $point_used;
+        }
+        else
+        {
+            $total = $room->price * $numberOfDays;
+        }
 
         $dataBooking = $request->all();
         $dataBooking['total'] = $total;
+        if(Auth::check())
+        {
+            $dataBooking['pointUsed'] = $point_used;
+        }
         $dataBooking['status'] = 'Chưa thanh toán';
+
 
         $user_id = Auth::check() ? Auth::user()->id : null;
 
@@ -295,6 +309,14 @@ class ClientController extends Controller
                         $order->booking->status = 'Đã thanh toán';
                         $order->booking->save();
                         $order->save();
+                        if(Auth::check())
+                        {
+                            $user = $order->user;
+                            $newPoint = $order->booking->total * 0.1; //điểm sau khi thanh toán được cộng thêm
+                            $diemDu = $user->point - $order->booking->pointUsed;
+                            $user->point = $diemDu + $newPoint;
+                            $user->save();
+                        }
                         return redirect()->route("client.index")->with('message', 'Thanh toán thành công !');
                     }
                 } else {

@@ -88,6 +88,6 @@ class CommentController extends Controller
     {
         $comment->delete();
 
-        return redirect()->route('comment.index')->with('message', 'Xóa thành công!');
+        return redirect()->back()->with('message', 'Xóa thành công!');
     }
 }

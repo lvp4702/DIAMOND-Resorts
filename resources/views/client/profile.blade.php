@@ -11,13 +11,13 @@
         <div>
             <p>Username</p>
             <input type="text" name="username" id="username" value="{{ Auth::user()->username }}" class="text_input" disabled
-                style="border: 2px solid #fff">
+                style="border: 3px solid #fff">
         </div>
 
         <div>
             <p>Email</p>
             <input type="text" name="email" id="email" value="{{ Auth::user()->email }}" class="text_input"
-                disabled style="border: 2px solid #fff">
+                disabled style="border: 3px solid #fff">
         </div>
 
         <div>
@@ -53,6 +53,12 @@
             <img src="{{ Auth::user()->avatar }}" alt="Avatar"> <br>
             <input type="file" name="avatar" id="avatar">
             <img id="previewAvatar" src="#" alt="Preview">
+        </div>
+
+        <div>
+            <p>Point</p>
+            <input type="text" name="point" id="point" value="{{ number_format(Auth::user()->point, 0, ',', '.') }}" class="text_input" disabled
+                style="border: 3px solid #fff">
         </div>
 
         <div>

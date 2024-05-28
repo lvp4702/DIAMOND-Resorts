@@ -15,7 +15,7 @@
                     <th>Phone number</th>
                     <th>Check-in date</th>
                     <th>Check-out date</th>
-                    <th>Amount of people</th>
+                    <th>Point used</th>
                     <th>Room</th>
                     <th>Total(đ)</th>
                     <th>Status</th>
@@ -31,7 +31,7 @@
                         <td>{{ $item->phoneNumber }}</td>
                         <td>{{ $item->check_inDate }}</td>
                         <td>{{ $item->check_outDate }}</td>
-                        <td>{{ $item->amountOfPeople }}</td>
+                        <td>{{ number_format($item->pointUsed, 0, ',', '.') }}</td>
                         <td>{{ $item->room->name }}</td>
                         <td>{{ number_format($item->total, 0, ',', '.') }}</td>
                         <td>{{ $item->status }}</td>

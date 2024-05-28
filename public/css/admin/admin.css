@@ -342,6 +342,7 @@ tr:nth-child(even) {
     border-radius: 8px;
     color: var(--black);
     background-color: #ecfcff;
+    box-shadow: 0 0 1px 1px #bebebe;
     border: 1px solid #a7f2ff;
 }
 

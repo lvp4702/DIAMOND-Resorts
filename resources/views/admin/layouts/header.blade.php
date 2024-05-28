@@ -2,7 +2,7 @@
     <div class="header_main">
         <div class="header_left">
             <a href="{{ route('admin.index') }}" class="logo">
-                DIAMOND Resorts
+                DIAMOND Resort
             </a>
         </div>
         <div class="header_right">

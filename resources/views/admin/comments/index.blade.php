@@ -27,7 +27,7 @@
                         <td>{{ $comment->room->name }}</td>
                         <td>{{ $comment->content }}</td>
                         <td>{{ $comment->satisfaction }}</td>
-                        <td>{{ $comment->created_at->format('Y-m-d H:i') }}</td>
+                        <td>{{ $comment->created_at->format('d-m-Y H:i:s') }}</td>
                         <td>{{ $comment->reply }}</td>
                         <td style="float: left; display: flex;">
                             <form action="{{ route('comment.edit', $comment) }}" method="GET" id="editForm">

@@ -117,6 +117,6 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Không thể xóa tài khoản này!');
         }
         $user->delete();
-        return redirect()->route('user.index')->with('message', 'Xóa thành công!');
+        return redirect()->back()->with('message', 'Xóa thành công!');
     }
 }

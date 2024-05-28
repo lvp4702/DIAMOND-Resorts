@@ -44,6 +44,11 @@
             </div>
 
             <div class="chart">
+                <p>Doanh thu theo ngày</p>
+                <canvas id="dailyRevenueChart"></canvas>
+            </div>
+
+            <div class="chart">
                 <p>Top 5 phòng có lượng đặt cao nhất</p>
                 <canvas id="top5RoomsChart"></canvas>
             </div>
@@ -55,29 +60,12 @@
         </div>
 
         <div class="admin_content_right">
-            <p class="admin_content_right_title">Đơn hàng mới</p>
-            <div class="admin_content_right_list">
-                @if (count($newBookings) > 0)
-                    @foreach ($newBookings as $newBooking)
-                        <a href="{{ route('booking.show', $newBooking) }}" class="admin_content_right_item newItem" data-id="{{ $newBooking->id }}">
-                            <div class="admin_content_right_item_top">
-                                <b>{{ $newBooking->fullname }}</b> đã đặt phòng thành công !
-                            </div>
-                            <div class="admin_content_right_item_bot">
-                                <div class="admin_content_right_item_bot_left">
-                                    {{ $newBooking->created_at->format('d-m-Y H:i:s') }}</div>
-                                <div class="admin_content_right_item_bot_right">Nhấn để xem</div>
-                            </div>
-                        </a>
-                    @endforeach
-                @endif
-            </div>
-
-            <p class="admin_content_right_title" style="margin-top: 26px;">Đánh giá mới</p>
+            <p class="admin_content_right_title">Đánh giá mới</p>
             <div class="admin_content_right_list">
                 @if (count($newComments) > 0)
                     @foreach ($newComments as $newComment)
-                        <a href="{{ route('comment.edit', $newComment) }}" class="admin_content_right_item newItem" data-id="{{ $newComment->id }}">
+                        <a href="{{ route('comment.edit', $newComment) }}" class="admin_content_right_item newItem"
+                            data-id="{{ $newComment->id }}">
                             <div class="admin_content_right_item_top">
                                 <b>{{ $newComment->user->username }}</b> đã thêm 1 đánh giá mới về
                                 <b>{{ $newComment->room->name }}</b> !
@@ -85,6 +73,24 @@
                             <div class="admin_content_right_item_bot">
                                 <div class="admin_content_right_item_bot_left">
                                     {{ $newComment->created_at->format('d-m-Y H:i:s') }}</div>
+                                <div class="admin_content_right_item_bot_right">Nhấn để phản hồi</div>
+                            </div>
+                        </a>
+                    @endforeach
+                @endif
+            </div>
+
+            <p class="admin_content_right_title" style="margin-top: 26px;">Đơn hàng hôm nay({{ count($bookingsToday) }})</p>
+            <div class="admin_content_right_list">
+                @if (count($bookingsToday) > 0)
+                    @foreach ($bookingsToday as $booking)
+                        <a href="{{ route('booking.show', $booking) }}" class="admin_content_right_item">
+                            <div class="admin_content_right_item_top">
+                                <b>{{ $booking->fullname }}</b> đã đặt phòng thành công !
+                            </div>
+                            <div class="admin_content_right_item_bot">
+                                <div class="admin_content_right_item_bot_left">
+                                    {{ $booking->created_at->format('d-m-Y H:i:s') }}</div>
                                 <div class="admin_content_right_item_bot_right">Nhấn để xem</div>
                             </div>
                         </a>
@@ -164,7 +170,8 @@
                 }
 
                 item.addEventListener('click', function(event) {
-                    event.preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a (chuyển hướng trang)
+                    event
+                        .preventDefault(); // Ngăn chặn hành vi mặc định của thẻ a (chuyển hướng trang)
                     const href = item.getAttribute('href');
                     setTimeout(function() {
                         window.location.href = href; // Trước khi ẩn thì chuyển hướng trang
@@ -174,6 +181,35 @@
                         item.style.display = 'none'; // thực hiện ẩn thẻ a
                     }, 500);
                 });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dailyRevenue = @json($dailyRevenue);
+            const recentDates = dailyRevenue.slice(-7).map(data => data.date); // Chỉ lấy dữ liệu của 7 ngày gần đây
+            const recentRevenues = dailyRevenue.slice(-7).map(data => data.revenue);
+
+            const ctx = document.getElementById('dailyRevenueChart').getContext('2d');
+            const dailyRevenueChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: recentDates,
+                    datasets: [{
+                        label: 'Doanh thu',
+                        data: recentRevenues,
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
             });
         });
     </script>

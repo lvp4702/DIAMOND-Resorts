@@ -110,7 +110,7 @@ class BookingController extends Controller
     public function destroy(Booking $booking)
     {
         $booking->delete();
-        return redirect()->route('booking.index')->with('message', 'Xóa thành công !');
+        return redirect()->back()->with('message', 'Xóa thành công !');
     }
 
     public function XuatHoaDon($id)

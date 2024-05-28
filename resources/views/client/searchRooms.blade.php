@@ -27,8 +27,7 @@
             </div>
         </div>
         @if (count($rooms) > 0)
-            <h1 style="width: 80%; margin: auto; margin-bottom: 10px"><i class="fa-solid fa-exclamation"></i> Kết quả tìm
-                kiếm({{ count($rooms) }})</h1>
+            <h1 style="width: 80%; margin: auto; margin-bottom: 10px">Kết quả tìm kiếm({{ count($rooms) }})</h1>
         @else
             <h1 style="width: 80%; margin: auto; margin-bottom: 10px"><i class="fa-solid fa-triangle-exclamation"></i> Không có kết quả</h1>
         @endif

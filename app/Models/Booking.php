@@ -19,7 +19,8 @@ class Booking extends Model
         'user_id',
         'room_id',
         'total',
-        'status'
+        'status',
+        'pointUsed'
     ];
 
     public function user()
@@ -35,6 +36,7 @@ class Booking extends Model
         return $this->hasOne(Order::class, 'booking_id', 'id');
     }
 
+    //Doanh thu theo tháng
     public static function getMonthlyRevenue()
     {
         return self::select(
@@ -46,6 +48,19 @@ class Booking extends Model
             ->groupBy('year', 'month')
             ->orderBy('year', 'asc')
             ->orderBy('month', 'asc')
+            ->get();
+    }
+
+    //Doanh thu theo ngày
+    public static function getDailyRevenue()
+    {
+        return self::select(
+            DB::raw('DATE(created_at) as date'),
+            DB::raw('SUM(total) as revenue')
+        )
+            ->where('status', 'Đã thanh toán')
+            ->groupBy('date')
+            ->orderBy('date', 'asc')
             ->get();
     }
 }
